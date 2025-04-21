@@ -120,7 +120,7 @@ elif page == "Model & Insights":
         st.image(imagepp2, use_column_width=True)
         st.write("")
         st.write("CountVectorizer() is used to convert preprocessed_text into numeric data by converting the text into a matrix of token (word) counts. We now have a sparse matrix of shape (3986, 6933), i.e. (n_samples, n_features).")
-        st.write("We have built our model on a 80-20 train-test split for the vectorized matrix. To reduce the number of dimensions from 6933, Principle Component Analysis (PCA) is employed. The 95% rule is applied and it is found that 482 components are required to reach 95% variance.")
+        st.write("We have built our model on a 80-20 train-test split for the vectorized matrix. To reduce the number of dimensions from 6933, Principle Component Analysis (PCA) is employed. The 95% rule is applied and it is found that 482 components are required to explain 95% of the variance in the dataset.")
         imagepp3 = Image.open("Streamlit/visualizations/scree_plot.png")
         st.image(imagepp3, use_column_width=True)
         st.write("Proportion of variance explained by first 5 components:")
