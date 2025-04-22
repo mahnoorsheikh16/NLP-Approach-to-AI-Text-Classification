@@ -14,42 +14,6 @@ import streamlit.components.v1 as components
 import joblib
 import pickle
 
-#set theme
-theme = st.sidebar.radio("Select Theme", ["Light", "Dark"], horizontal=True)
-light_theme = """
-    <style>
-        body { background-color: white; color: black; }
-        .stApp { background-color: white; }
-        .stSidebar { background-color: #f0f2f6 !important; } 
-    </style>
-"""
-dark_theme = """
-    <style>
-        body { background-color: black; color: #E0E0E0; }  
-        .stApp { background-color: black; }
-        section[data-testid="stSidebar"] {
-            background-color: #1E1E1E !important;
-        }
-        section[data-testid="stSidebar"] * {
-            color: #E0E0E0 !important;
-        }
-        h1, h2, h3, h4, h5, h6, p, div, span, label { 
-            color: #E0E0E0 !important;  
-        }
-        section[data-testid="stSidebar"] .stSelectbox div[data-testid="stMarkdownContainer"] * {
-            color: #E0E0E0 !important; 
-        }
-        section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] * {
-            color: black !important;  /* Fix for dropdown options */
-        }
-    </style>
-"""
-if theme == "Dark":
-    st.markdown(dark_theme, unsafe_allow_html=True)
-else:
-    st.markdown(light_theme, unsafe_allow_html=True)
-
-
 #add navigation sidebar
 st.sidebar.title("🔎Explore")
 page = st.sidebar.selectbox("Select a page:", ["Homepage", "Evaluate Text", "Model & Insights"], index=0)
