@@ -1,3 +1,3 @@
 # STT811_StatsProject
 
-https://ai-detector-stt.streamlit.app/
+https://stt811statsproject.streamlit.app/
