@@ -17,7 +17,7 @@ import pickle
 #add navigation sidebar
 st.sidebar.title("🔎Explore")
 page = st.sidebar.selectbox("Select a page:", ["Homepage", "Evaluate Text", "Model & Insights"], index=0)
-for _ in range(16):
+for _ in range(20):
     st.sidebar.write("")
 st.sidebar.write("View the code and dataset details at [STT811 GitHub](https://github.com/andrew-jxhn/STT811_StatsProject)")
 
