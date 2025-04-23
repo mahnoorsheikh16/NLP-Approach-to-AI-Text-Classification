@@ -13,3 +13,4 @@ transformers==4.40.0
 scikit-learn==1.4.2
 gdown==4.7.1
 torch==2.2.2
+safetensors==0.4.2
