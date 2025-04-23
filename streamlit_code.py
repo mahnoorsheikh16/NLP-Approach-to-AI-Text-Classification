@@ -24,7 +24,7 @@ nltk.download('stopwords')
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-device = torch.device("cuda" if torch.cuda.is_available() else "CPU")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def preprocess_text(text):
     text = text.lower()
