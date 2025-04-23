@@ -39,20 +39,8 @@ if page == "Homepage":
 elif page == "Evaluate Text":
     @st.cache_resource
     def load_model():
-        model_path = "./bert_classifier"
-        zip_path = "bert_classifier.zip"
-        if not os.path.exists(model_path):
-            file_id = "1OKcAR_cz8ljyrSNQio28elt3xgDDR3ar"
-            gdown.download(
-                url=f"https://drive.google.com/uc?id=1OKcAR_cz8ljyrSNQio28elt3xgDDR3ar",
-                output=zip_path,
-                quiet=False,
-                use_cookies=True
-            )
-            with zipfile.ZipFile(zip_path, "r") as zip_ref:
-                zip_ref.extractall(".")
-        model = BertForSequenceClassification.from_pretrained(model_path)
-        tokenizer = BertTokenizer.from_pretrained(model_path)
+        model = BertForSequenceClassification.from_pretrained("mahnoor16/bert-ai-detector")
+        tokenizer = BertTokenizer.from_pretrained("mahnoor16/bert-ai-detector")
         model.to(device)
         model.eval()
         return model, tokenizer
