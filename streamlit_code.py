@@ -17,6 +17,12 @@ from transformers import BertTokenizer, BertForSequenceClassification
 import torch
 import os, requests, zipfile
 import gdown
+import re
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 #add navigation sidebar
@@ -37,6 +43,14 @@ if page == "Homepage":
     st.write("**Upload and Evaluate Text**: Navigate to the ‘Evaluate Text’ page (from the left-hand menu) to submit text and verify its authenticity.")
     st.write("**Learn About the Model and Key Trends**: Visit the ‘Model & Insights’ page to explore critical patterns and a detailed breakdown of the model employed for the analysis.")
 
+def preprocess_text(text):
+    text = text.lower()
+    text = re.sub(r'[^a-zA-Z\s]', '', text)
+    tokens = word_tokenize(text)
+    stop_words = set(stopwords.words('english'))
+    filtered_tokens = [word for word in tokens if word not in stop_words]
+    return " ".join(filtered_tokens)
+
 elif page == "Evaluate Text":
     @st.cache_resource
     def load_model():
@@ -49,9 +63,10 @@ elif page == "Evaluate Text":
     
     user_input = st.text_input("Enter Text:")
     if user_input:
+        clean_input = preprocess_text(user_input)
         st.write(f"You entered: {user_input}")
         
-        encoding = tokenizer(user_input, return_tensors="pt", truncation=True, padding=True, max_length=512)
+        encoding = tokenizer(clean_input, return_tensors="pt", truncation=True, padding=True, max_length=512)
         input_ids = encoding["input_ids"].to(device)
         attention_mask = encoding["attention_mask"].to(device)
 
