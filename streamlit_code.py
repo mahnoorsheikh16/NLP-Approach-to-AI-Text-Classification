@@ -38,13 +38,13 @@ if page == "Homepage":
 
 elif page == "Evaluate Text":
     @st.cache_resource
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     def load_model():
         model = BertForSequenceClassification.from_pretrained("mahnoor16/bert-ai-detector")
         tokenizer = BertTokenizer.from_pretrained("mahnoor16/bert-ai-detector")
         model.to(device)
         model.eval()
         return model, tokenizer
-    
     model, tokenizer = load_model()
     
     user_input = st.text_input("Enter Text:")
