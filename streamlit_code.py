@@ -17,6 +17,7 @@ from transformers import BertTokenizer, BertForSequenceClassification
 import torch
 import os, requests, zipfile
 import gdown
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 #add navigation sidebar
 st.sidebar.title("🔎Explore")
@@ -38,7 +39,6 @@ if page == "Homepage":
 
 elif page == "Evaluate Text":
     @st.cache_resource
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     def load_model():
         model = BertForSequenceClassification.from_pretrained("mahnoor16/bert-ai-detector")
         tokenizer = BertTokenizer.from_pretrained("mahnoor16/bert-ai-detector")
