@@ -43,7 +43,11 @@ elif page == "Evaluate Text":
         zip_path = "bert_classifier.zip"
         if not os.path.exists(model_path):
             file_id = "1OKcAR_cz8ljyrSNQio28elt3xgDDR3ar"
-            gdown.download(f"https://drive.google.com/uc?id={file_id}", zip_path, quiet=False)
+            gdown.download(
+                url=f"https://drive.google.com/uc?id={file_id}",
+                output=zip_path,
+                quiet=False
+            )
             with zipfile.ZipFile(zip_path, "r") as zip_ref:
                 zip_ref.extractall(".")
         model = BertForSequenceClassification.from_pretrained(model_path)
