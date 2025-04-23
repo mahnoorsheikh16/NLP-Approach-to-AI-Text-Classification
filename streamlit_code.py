@@ -13,6 +13,7 @@ from PIL import Image
 import streamlit.components.v1 as components
 import joblib
 import pickle
+from transformers import BertTokenizer, BertForSequenceClassification
 
 #add navigation sidebar
 st.sidebar.title("🔎Explore")
@@ -33,16 +34,34 @@ if page == "Homepage":
     st.write("**Learn About the Model and Key Trends**: Visit the ‘Model & Insights’ page to explore critical patterns and a detailed breakdown of the model employed for the analysis.")
     
 elif page == "Evaluate Text":
+    @st.cache_resource
+    def load_model():
+        model = BertForSequenceClassification.from_pretrained("./bert_classifier")
+        tokenizer = BertTokenizer.from_pretrained("./bert_classifier")
+        model.to(device)
+        model.eval()
+        return model, tokenizer
+    
+    model, tokenizer = load_model()
+    
     user_input = st.text_input("Enter Text:")
-    # apply novel model on user_input >> should return class (AI or human)
-    # probability of AI if AI class predicted
     if user_input:
         st.write(f"You entered: {user_input}")
-        #if result == "AI":
-            #st.write("This text is AI generated:()")
-            #st.write("AI percentage: xx")
-        #if result == "Human":
-            #st.write("This text is written by a human:)")
+        
+        encoding = tokenizer(user_input, return_tensors="pt", truncation=True, padding=True, max_length=512)
+        input_ids = encoding["input_ids"].to(device)
+        attention_mask = encoding["attention_mask"].to(device)
+
+        with torch.no_grad():
+            outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+            probs = torch.nn.functional.softmax(outputs.logits, dim=1)
+            pred = torch.argmax(probs).item()
+            confidence = probs[0][pred].item()
+
+        label = "This text is AI generated:(" if pred == 1 else "This text is written by a human:)"
+        st.write(label)
+        st.write(f"**Confidence:** {confidence:.2%}")
+
 
 elif page == "Model & Insights":
     st.subheader("Understanding the Model's Inner Workings")
