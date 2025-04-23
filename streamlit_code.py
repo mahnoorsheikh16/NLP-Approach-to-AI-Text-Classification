@@ -36,8 +36,8 @@ if page == "Homepage":
 elif page == "Evaluate Text":
     @st.cache_resource
     def load_model():
-        model = BertForSequenceClassification.from_pretrained("./bert_classifier")
-        tokenizer = BertTokenizer.from_pretrained("./bert_classifier")
+        model = BertForSequenceClassification.from_pretrained("Streamlit/bert_classifier")
+        tokenizer = BertTokenizer.from_pretrained("Streamlit/bert_classifier")
         model.to(device)
         model.eval()
         return model, tokenizer
