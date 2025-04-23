@@ -15,6 +15,8 @@ import joblib
 import pickle
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
+import os, requests, zipfile
+import gdown
 
 #add navigation sidebar
 st.sidebar.title("🔎Explore")
@@ -33,12 +35,19 @@ if page == "Homepage":
     st.write("**App Layout:**")
     st.write("**Upload and Evaluate Text**: Navigate to the ‘Evaluate Text’ page (from the left-hand menu) to submit text and verify its authenticity.")
     st.write("**Learn About the Model and Key Trends**: Visit the ‘Model & Insights’ page to explore critical patterns and a detailed breakdown of the model employed for the analysis.")
-    
+
 elif page == "Evaluate Text":
     @st.cache_resource
     def load_model():
-        model = BertForSequenceClassification.from_pretrained("Streamlit/bert_classifier")
-        tokenizer = BertTokenizer.from_pretrained("Streamlit/bert_classifier")
+        model_path = "./bert_classifier"
+        zip_path = "bert_classifier.zip"
+        if not os.path.exists(model_path):
+            file_id = "1OKcAR_cz8ljyrSNQio28elt3xgDDR3ar"
+            gdown.download(f"https://drive.google.com/uc?id={file_id}", zip_path, quiet=False)
+            with zipfile.ZipFile(zip_path, "r") as zip_ref:
+                zip_ref.extractall(".")
+        model = BertForSequenceClassification.from_pretrained(model_path)
+        tokenizer = BertTokenizer.from_pretrained(model_path)
         model.to(device)
         model.eval()
         return model, tokenizer
