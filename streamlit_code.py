@@ -223,8 +223,8 @@ elif page == "Model & Insights":
 
         with tab2:  
             st.write("**How does it work?**")
-            st.write("When you pass a sentence to BERT:
-            st.write("BERT learns the contextual representations of words in a sentence from both directions (left and right) at once.")
+            st.write("put in details of how it works maybe")
+            st.write("")
             with open("Streamlit/bert_result.pkl", "rb") as f:
                 report = pickle.load(f)
             report_df = pd.DataFrame(report).transpose()
