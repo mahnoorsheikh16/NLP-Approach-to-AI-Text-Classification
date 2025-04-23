@@ -34,12 +34,34 @@ if page == "Homepage":
     st.write("**Learn About the Model and Key Trends**: Visit the ‘Model & Insights’ page to explore critical patterns and a detailed breakdown of the model employed for the analysis.")
     
 elif page == "Evaluate Text":
-        st.write("df")
+    @st.cache_resource
+    def load_model():
+        model = BertForSequenceClassification.from_pretrained("Streamlit/bert_classifier")
+        tokenizer = BertTokenizer.from_pretrained("Streamlit/bert_classifier")
+        model.to(device)
+        model.eval()
+        return model, tokenizer
+    
+    model, tokenizer = load_model()
+    
+    user_input = st.text_input("Enter Text:")
+    if user_input:
+        st.write(f"You entered: {user_input}")
+        
+        encoding = tokenizer(user_input, return_tensors="pt", truncation=True, padding=True, max_length=512)
+        input_ids = encoding["input_ids"].to(device)
+        attention_mask = encoding["attention_mask"].to(device)
 
-        #label = "This text is AI generated:(" if pred == 1 else "This text is written by a human:)"
-        #st.write(label)
-        #st.write(f"**Confidence:** {confidence:.2%}")
+        with torch.no_grad():
+            outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+            probs = torch.nn.functional.softmax(outputs.logits, dim=1)
+            pred = torch.argmax(probs).item()
+            confidence = probs[0][pred].item()
 
+        label = "This text is AI generated:(" if pred == 1 else "This text is written by a human:)"
+        st.write(label)
+        st.write(f"**Confidence:** {confidence:.2%}")
+        
 
 elif page == "Model & Insights":
     st.subheader("Understanding the Model's Inner Workings")
@@ -161,7 +183,7 @@ elif page == "Model & Insights":
 
     with tab3:
         st.write("For comprehensive results, the performance of traditional classifiers and the deep neural network model BERT (Bidirectional Encoder Representations from Transformers) is evaluated on the training dataset.")
-        st.write("**Best Model Overall:** BERT for accurately distinguising between the two classes with an accuracy of ...")
+        st.write("**Best Model Overall:** BERT for accurately distinguising between the two classes with an accuracy of 85%.")
         tab1, tab2 = st.tabs(["Baseline Models: Traditional Classifiers", "Novel Model: BERT"])
         st.write("")  
 
@@ -200,11 +222,13 @@ elif page == "Model & Insights":
             }))
 
         with tab2:  
-            st.write("novel model deets")
+            st.write("**How does it work?**")
+            st.write("When you pass a sentence to BERT:
+            st.write("BERT learns the contextual representations of words in a sentence from both directions (left and right) at once.")
             with open("Streamlit/bert_result.pkl", "rb") as f:
                 report = pickle.load(f)
             report_df = pd.DataFrame(report).transpose()
-            st.subheader("**Test Set Classification Report**")
+            st.write("**Test Set Classification Report**")
             st.dataframe(report_df.style.format({
                 "precision": "{:.2f}",
                 "recall": "{:.2f}",
