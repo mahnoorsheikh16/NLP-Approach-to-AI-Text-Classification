@@ -111,14 +111,16 @@ elif page == "Model & Insights":
         st.write("Numeric columns derived from the original data were generated. These included: Question_length, Human_length, AI_length, Question_special_count, Human_special_count, AI_special_count, avg_special_char_diff.")
         st.write("To prepare for modelling, we:")
         st.markdown("""
-        ✅ Combined AI and human responses to create target variable 'Is_AI'  
+        ✅ Combined AI and human responses to create target variable 'Is_AI' 
+        ✅ Combined similar columns to be consistent with the new dataset structure (with target)  
+        ✅ Scaled numeric columns using z-score scaling
         ✅ Prepared processed text by<br>
         &nbsp;&nbsp;&nbsp;&nbsp;- Changing text to lowercase<br>
         &nbsp;&nbsp;&nbsp;&nbsp;- Removing punctuation and special characters from responses<br>
         &nbsp;&nbsp;&nbsp;&nbsp;- Tokenizing words and removing stopwords<br>
-        ✅ Combined similar columns to be consistent with the new dataset structure (with target)  
-        ✅ Scaled numeric columns using z-score scaling
         """, unsafe_allow_html=True)
+        imagepp4 = Image.open("Streamlit/visualizations/preprocess_chart.png")
+        st.image(imagepp4, use_column_width=True)
         st.write("The transformed dataset is of the form:")
         imagepp2 = Image.open("Streamlit/visualizations/dataset.png")
         st.image(imagepp2, use_column_width=True)
