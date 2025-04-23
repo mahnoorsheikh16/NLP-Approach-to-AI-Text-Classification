@@ -11,3 +11,4 @@ joblib==1.4.2
 xgboost==2.0.3
 transformers==4.40.0
 scikit-learn==1.4.2
+safetensors==0.4.2
