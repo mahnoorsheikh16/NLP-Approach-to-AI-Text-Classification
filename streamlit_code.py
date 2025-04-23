@@ -44,9 +44,10 @@ elif page == "Evaluate Text":
         if not os.path.exists(model_path):
             file_id = "1OKcAR_cz8ljyrSNQio28elt3xgDDR3ar"
             gdown.download(
-                url=f"https://drive.google.com/uc?id={file_id}",
+                url=f"https://drive.google.com/uc?id=1OKcAR_cz8ljyrSNQio28elt3xgDDR3ar",
                 output=zip_path,
-                quiet=False
+                quiet=False,
+                use_cookies=True
             )
             with zipfile.ZipFile(zip_path, "r") as zip_ref:
                 zip_ref.extractall(".")
