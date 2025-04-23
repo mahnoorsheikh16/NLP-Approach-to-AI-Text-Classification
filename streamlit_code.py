@@ -81,6 +81,7 @@ elif page == "Evaluate Text":
         label = "This text is AI generated:(" if pred == 1 else "This text is written by a human:)"
         st.write(label)
         st.write(f"**Confidence:** {confidence:.2%}")
+        st.write("Human prob:", probs[0][0].item(), "AI prob:", probs[0][1].item())
         
 
 elif page == "Model & Insights":
