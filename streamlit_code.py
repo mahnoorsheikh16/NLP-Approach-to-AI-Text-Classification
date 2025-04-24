@@ -99,32 +99,11 @@ elif page == "Evaluate Text":
         st.write(label)
         st.write(f"**Confidence:** Human: {probs[0][0].item():.2%} AI: {probs[0][1].item():.2%}")
         
-        # Data for pie chart
-        values = [float(probs[0][0]), float(probs[0][1])]
+        #PieChart
+        bert_vals = [float(probs[0][0]), float(probs[0][1])]
         labels = ["Human", "AI"]
         colors = ['#66b3ff', '#ff9999']
-        fig, ax = plt.subplots(figsize=(3, 3))
-        wedges, texts, autotexts = ax.pie(
-            values,
-            labels=None,                   # we'll use legend instead
-            colors=colors,
-            startangle=90,
-            counterclock=False,
-            autopct='%1.1f%%',
-            pctdistance=0.75,
-            wedgeprops={'width': 0.4, 'edgecolor':'white'}
-        )
-        ax.set(aspect="equal")
-        # add center circle for donut look
-        centre_circle = plt.Circle((0,0),0.50,fc='white')
-        ax.add_artist(centre_circle)
-        ax.legend(wedges, labels,
-          title="Class",
-          loc="center left",
-          bbox_to_anchor=(1, 0, 0.5, 1))
-        plt.title("BERT Confidence", pad=20)
-        st.pyplot(fig)
-
+        
         #FOR MLP
         resp_len = len(clean_input)
         resp_spec = sum(1 for c in user_input if not c.isalnum() and not c.isspace())
@@ -140,7 +119,34 @@ elif page == "Evaluate Text":
         st.write("**MLP’s Evaluation:**")
         st.write(label)
         st.write(f"**Confidence:** Human: {mlp_probs[0]:.2%} AI: {mlp_probs[1]:.2%}")
-        #st.bar_chart(mlp_probs)
+        
+        #Piechart
+        mlp_values = [mlp_probs[0], mlp_probs[1]]
+        # one row, two tiny donuts
+        fig, axes = plt.subplots(1, 2, figsize=(3, 1.5), constrained_layout=True)
+        
+        for ax, vals, cols, title in zip(
+            axes,
+            [bert_vals, mlp_vals],
+            [bert_colors, mlp_colors],
+            ["BERT", "MLP"]
+        ):
+            wedges = ax.pie(
+                vals,
+                colors=cols,
+                startangle=90,
+                counterclock=False,
+                wedgeprops={'width': 0.5, 'edgecolor': 'white'}
+            )[0]
+            ax.set(aspect="equal", title=title)
+            # annotate each slice with pct + label inside
+            for w, pct, lbl in zip(wedges, vals, labels):
+                angle = 0.5*(w.theta2 + w.theta1)
+                x = 0.6 * np.cos(np.deg2rad(angle))
+                y = 0.6 * np.sin(np.deg2rad(angle))
+                ax.text(x, y, f"{lbl}\n{pct:.0%}", ha='center', va='center', fontsize=6)
+        
+        st.pyplot(fig)
         
 
 elif page == "Model & Insights":
