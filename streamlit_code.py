@@ -68,11 +68,11 @@ elif page == "Evaluate Text":
     @st.cache_resource
     def load_mlp_artifacts():
         vect = joblib.load("Streamlit/vectorizer.pkl")
-        sclr = joblib.load("Streamlit/scaler.pkl")
+        char_scaler = joblib.load("Streamlit/char_scaler.pkl")
         pca_ = joblib.load("Streamlit/pca.pkl")
         mlp  = joblib.load("Streamlit/mlp_classifier.pkl")
-        return vect, sclr, pca_, mlp
-    vectorizer, scaler, pca, mlp_model = load_mlp_artifacts()
+        return vect, char_scaler, pca_, mlp_model
+    vectorizer, char_scaler, pca, mlp_model = load_mlp_artifacts()
 
     #q_len = st.number_input("Question length:", min_value=0, value=0)
     #q_spec = st.number_input("Question special-char count:", min_value=0, value=0)
@@ -124,7 +124,7 @@ elif page == "Evaluate Text":
         resp_spec = sum(1 for c in user_input if not c.isalnum() and not c.isspace())
         X_vec = vectorizer.transform([clean_input])  
         num_arr = np.array([[resp_len, resp_spec]])
-        num_scaled = scaler.transform(num_arr)
+        num_scaled = char_scaler.transform(num_arr)
         X_comb = hstack([X_vec, num_scaled])
         X_pca = pca.transform(X_comb.toarray())
         mlp_pred = mlp_model.predict(X_pca)[0]
