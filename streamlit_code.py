@@ -122,7 +122,7 @@ elif page == "Evaluate Text":
         
         #Piechart
         mlp_vals = [mlp_probs[0], mlp_probs[1]]
-        fig, axes = plt.subplots(1, 2, figsize=(3, 1.5), constrained_layout=True)
+        fig, axes = plt.subplots(1, 2, figsize=(1.5, 0.75), constrained_layout=True)
         
         for ax, vals, cols, title in zip(
             axes,
