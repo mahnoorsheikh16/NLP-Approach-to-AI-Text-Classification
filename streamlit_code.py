@@ -97,8 +97,9 @@ elif page == "Evaluate Text":
         label = "This text is AI generated:(" if pred == 1 else "This text is written by a human:)"
         st.write("**BERT’s Evaluation:**")
         st.write(label)
-        st.write(f"**Confidence:** {confidence:.2%}")
-        st.write("Human prob:", probs[0][0].item(), "AI prob:", probs[0][1].item())
+        st.write(f"**Confidence:** Human: {probs[0][0].item():.2%} AI: {probs[0][1].item():.2%}")
+        #st.write(f"**Confidence:** {confidence:.2%}")
+        #st.write("Human prob:", probs[0][0].item(), "AI prob:", probs[0][1].item())
         # Data for pie chart
         values = [float(probs[0][0]), float(probs[0][1])]
         labels = ["Human", "AI"]
