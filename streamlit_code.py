@@ -95,10 +95,10 @@ elif page == "Evaluate Text":
             confidence = probs[0][pred].item()
 
         label = "This text is AI generated:(" if pred == 1 else "This text is written by a human:)"
-        st.subheader("BERT’s Evaluation:")
+        st.write("**BERT’s Evaluation:**")
         st.write(label)
         st.write(f"**Confidence:** {confidence:.2%}")
-        #st.write("Human prob:", probs[0][0].item(), "AI prob:", probs[0][1].item())
+        st.write("Human prob:", probs[0][0].item(), "AI prob:", probs[0][1].item())
         # Data for pie chart
         values = [float(probs[0][0]), float(probs[0][1])]
         labels = ["Human", "AI"]
@@ -131,7 +131,7 @@ elif page == "Evaluate Text":
         mlp_pred = mlp_model.predict(X_pca)[0]
         mlp_probs= mlp_model.predict_proba(X_pca)[0]
         label = "This text is AI generated:(" if mlp_pred==1 else "This text is written by a human:)"
-        st.subheader("MLP’s Evaluation:")
+        st.write("**MLP’s Evaluation:**")
         st.write(label)
         st.write(f"**Confidence:** Human: {mlp_probs[0]:.2%} AI: {mlp_probs[1]:.2%}")
         #st.bar_chart(mlp_probs)
