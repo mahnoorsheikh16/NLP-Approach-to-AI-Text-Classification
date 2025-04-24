@@ -23,6 +23,8 @@ nltk.download('punkt')
 nltk.download('stopwords')
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+import joblib
+from scipy.sparse import hstack
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -62,12 +64,24 @@ elif page == "Evaluate Text":
         model.eval()
         return model, tokenizer
     model, tokenizer = load_model()
-    
+
+    @st.cache_resource
+    def load_mlp_artifacts():
+        vect = joblib.load("Streamlit/vectorizer.pkl")
+        sclr = joblib.load("Streamlit/scaler.pkl")
+        pca_ = joblib.load("Streamlit/pca.pkl")
+        mlp  = joblib.load("Streamlit/mlp_classifier.pkl")
+        return vect, sclr, pca_, mlp
+    vectorizer, scaler, pca, mlp_model = load_mlp_artifacts()
+
+    #q_len = st.number_input("Question length:", min_value=0, value=0)
+    #q_spec = st.number_input("Question special-char count:", min_value=0, value=0)
     user_input = st.text_input("Enter Text:")
     if user_input:
-        clean_input = preprocess_text(user_input)
         st.write(f"You entered: {user_input}")
-        
+        clean_input = preprocess_text(user_input)
+
+        #FOR BERT
         encoding = tokenizer(clean_input, return_tensors="pt", truncation=True, padding=True, max_length=512)
         input_ids = encoding["input_ids"].to(device)
         attention_mask = encoding["attention_mask"].to(device)
@@ -79,16 +93,17 @@ elif page == "Evaluate Text":
             confidence = probs[0][pred].item()
 
         label = "This text is AI generated:(" if pred == 1 else "This text is written by a human:)"
+        st.subheader("BERT’s Evaluation:")
         st.write(label)
         st.write(f"**Confidence:** {confidence:.2%}")
-        st.write("Human prob:", probs[0][0].item(), "AI prob:", probs[0][1].item())
+        #st.write("Human prob:", probs[0][0].item(), "AI prob:", probs[0][1].item())
         # Data for pie chart
         values = [float(probs[0][0]), float(probs[0][1])]
         labels = ["Human", "AI"]
         colors = ['#66b3ff', '#ff9999']
 
        # half pie chart
-        fig, ax = plt.subplots(figsize=(4, 2.5))  # Adjust width and height as needed
+        fig, ax = plt.subplots(figsize=(2, 1.25))
         wedges, texts, autotexts = ax.pie(
             values,
             labels=labels,
@@ -98,13 +113,25 @@ elif page == "Evaluate Text":
             autopct='%1.1f%%',
             wedgeprops={'width': 0.3}
         )
-        
         ax.set(aspect="equal")
-        plt.title("Prediction Confidence (Pie Chart)", fontsize=6)
         plt.subplots_adjust(top=0.75)
-        
-        # Show chart in Streamlit
         st.pyplot(fig)
+
+        #FOR MLP
+        resp_len = len(clean_input)
+        resp_spec = sum(1 for c in user_input if not c.isalnum() and not c.isspace())
+        X_vec = vectorizer.transform([clean_input])  
+        num_arr = np.array([[resp_len, resp_spec]])
+        num_scaled = scaler.transform(num_arr)
+        X_comb = hstack([X_vec, num_scaled])
+        X_pca = pca.transform(X_comb.toarray())
+        mlp_pred = mlp_model.predict(X_pca)[0]
+        mlp_probs= mlp_model.predict_proba(X_pca)[0]
+        label = "This text is AI generated:(" if mlp_pred==1 else "This text is written by a human:)"
+        st.subheader("MLP’s Evaluation:")
+        st.write(label)
+        st.write(f"**Confidence:** Human: {mlp_probs[0]:.2%} AI: {mlp_probs[1]:.2%}")
+        st.bar_chart(mlp_probs)
         
 
 elif page == "Model & Insights":
