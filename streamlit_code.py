@@ -121,14 +121,13 @@ elif page == "Evaluate Text":
         st.write(f"**Confidence:** Human: {mlp_probs[0]:.2%} AI: {mlp_probs[1]:.2%}")
         
         #Piechart
-        mlp_values = [mlp_probs[0], mlp_probs[1]]
-        # one row, two tiny donuts
+        mlp_vals = [mlp_probs[0], mlp_probs[1]]
         fig, axes = plt.subplots(1, 2, figsize=(3, 1.5), constrained_layout=True)
         
         for ax, vals, cols, title in zip(
             axes,
             [bert_vals, mlp_vals],
-            [bert_colors, mlp_colors],
+            [colors, colors],
             ["BERT", "MLP"]
         ):
             wedges = ax.pie(
