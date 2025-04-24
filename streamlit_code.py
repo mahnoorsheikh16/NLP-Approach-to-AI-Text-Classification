@@ -100,7 +100,7 @@ elif page == "Evaluate Text":
         )
         
         ax.set(aspect="equal")
-        plt.title("Prediction Confidence (Half Pie Chart)", fontsize=12)
+        plt.title("Prediction Confidence (Pie Chart)", fontsize=6)
         plt.subplots_adjust(top=0.75)
         
         # Show chart in Streamlit
