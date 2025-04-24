@@ -68,7 +68,7 @@ def set_background(image_path):
     )
 
 # image input
-pic = 'statistics_background_transparent.png'
+pic = 'statistics_background_transparent_dark.png'
 set_background(pic)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
