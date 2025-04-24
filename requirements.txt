@@ -15,3 +15,5 @@ gdown==4.7.1
 torch==2.2.2
 safetensors==0.4.2
 nltk==3.8.1
+requests==2.31.0
+scipy==1.11.1
