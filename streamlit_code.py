@@ -173,7 +173,7 @@ elif page == "Evaluate Text":
         clean_input = preprocess_text(user_input)
 
         #FOR BERT
-        encoding = tokenizer(clean_input, return_tensors="pt", truncation=True, padding=True, max_length=512)
+        encoding = tokenizer(user_input, return_tensors="pt", truncation=True, padding=True, max_length=512)
         input_ids = encoding["input_ids"].to(device)
         attention_mask = encoding["attention_mask"].to(device)
 
