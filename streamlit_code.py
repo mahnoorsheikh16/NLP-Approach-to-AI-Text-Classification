@@ -25,6 +25,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import joblib
 from scipy.sparse import hstack
+import base64
 
 st.set_page_config(layout="wide", page_title="", initial_sidebar_state="expanded")
 
