@@ -133,7 +133,7 @@ if page == "Homepage":
             .bottom-center {{
                 position: fixed;
                 bottom: 20px;
-                left: 50%;
+                left: 40%;
                 transform: translateX(-50%);
                 z-index: 999;
             }}
