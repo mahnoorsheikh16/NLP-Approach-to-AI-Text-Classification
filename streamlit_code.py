@@ -363,13 +363,14 @@ elif page == "Model & Insights":
         imageida11 = Image.open("Streamlit/visualizations/FLesh_score.png")
         st.image(imageida11, use_column_width=True)
         st.subheader("Flesch Reading Ease (FRE)")
-        st.markdown(r"""
-        <div style='color:white; font-size: 20px;'>
-        $$
-        \mathrm{FRE}(X) = 206.835 - 1.015\,\frac{W}{S} - 84.6\,\frac{\mathrm{SYL}}{W}
-        $$
-        </div>
-        """, unsafe_allow_html=True)
+        st.latex(r"""
+        \mathrm{FRE}(X)
+        = 206.835
+        \;-\
+        1.015\,\frac{W}{S}
+        \;-\
+        84.6\,\frac{\mathrm{SYL}}{W}
+        """)
         
         st.subheader("Gunning Fog Index (GFI)")
         st.latex(r"""
