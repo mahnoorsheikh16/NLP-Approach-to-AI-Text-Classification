@@ -456,7 +456,7 @@ elif page == "Model & Insights":
             - **Model**: `BertForSequenceClassification` from Hugging Face.  
             - **Optimizer**: Typically `AdamW` for handling weight decay.  
             - **Loss Function**: Cross-entropy loss for classification tasks.  
-            - **Epochs**: We train the model for **3 epochs**, which is a good baseline for fine-tuning.  
+            - **Epochs**: We train the model for **30 epochs**, which is a good baseline for fine-tuning.  
             - **Evaluation**: During or after training, we track metrics like **accuracy**, **precision**, **recall**, and **F1 score** using a validation set.
             """)
 
