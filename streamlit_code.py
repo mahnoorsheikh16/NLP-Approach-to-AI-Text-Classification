@@ -134,7 +134,7 @@ elif page == "Evaluate Text":
         st.subheader("MLP’s Evaluation:")
         st.write(label)
         st.write(f"**Confidence:** Human: {mlp_probs[0]:.2%} AI: {mlp_probs[1]:.2%}")
-        st.bar_chart(mlp_probs)
+        #st.bar_chart(mlp_probs)
         
 
 elif page == "Model & Insights":
