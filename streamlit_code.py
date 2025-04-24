@@ -119,7 +119,7 @@ elif page == "Model & Insights":
         &nbsp;&nbsp;&nbsp;&nbsp;- Removing punctuation and special characters from responses<br>
         &nbsp;&nbsp;&nbsp;&nbsp;- Tokenizing words and removing stopwords<br>
         """, unsafe_allow_html=True)
-        imagepp4 = Image.open("Streamlit/visualizations/preprocess_chart.png")
+        imagepp4 = Image.open("Streamlit/visualizations/preprocess_chart2.png")
         st.image(imagepp4, use_column_width=True)
         st.write("The transformed dataset is of the form:")
         imagepp2 = Image.open("Streamlit/visualizations/dataset.png")
