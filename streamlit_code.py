@@ -82,6 +82,29 @@ elif page == "Evaluate Text":
         st.write(label)
         st.write(f"**Confidence:** {confidence:.2%}")
         st.write("Human prob:", probs[0][0].item(), "AI prob:", probs[0][1].item())
+        # Data for pie chart
+        values = [probs[0][0], probs[0][1]]
+        labels = ["Human", "AI"]
+        colors = ['#66b3ff', '#ff9999']
+
+        # Create the half pie chart
+        fig, ax = plt.subplots()
+        wedges, texts, autotexts = ax.pie(
+            values,
+            labels=labels,
+            colors=colors,
+            startangle=180,
+            counterclock=False,
+            autopct='%1.1f%%',
+            wedgeprops={'width': 0.5}
+        )
+
+        ax.set(aspect="equal")
+        plt.title("Prediction Confidence (Half Pie Chart)")
+        plt.subplots_adjust(top=0.75)
+
+        # Show chart in Streamlit
+        st.pyplot(fig)
         
 
 elif page == "Model & Insights":
