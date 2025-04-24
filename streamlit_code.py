@@ -231,6 +231,25 @@ elif page == "Model & Insights":
         st.write("Is the human response easier to read than the AI one? We've used Readability and Lexical metrics like total words, total syllables and total sentences to compute the **Flesch Reading Ease Score**.") 
         imageida11 = Image.open("Streamlit/visualizations/FLesh_score.png")
         st.image(imageida11, use_column_width=True)
+        st.subheader("Flesch Reading Ease (FRE)")
+        st.latex(r"""
+        \mathrm{FRE}(X)
+        = 206.835
+        \;-\;
+        1.015\,\frac{W}{S}
+        \;-\;
+        84.6\,\frac{\mathrm{SYL}}{W}
+        """)
+
+        st.subheader("Gunning Fog Index (GFI)")
+        st.latex(r"""
+        \mathrm{GFI}(X)
+        = 0.4\;\Bigl(
+        \frac{W}{S}
+        \;+\;
+        100\,\frac{\mathrm{CW}}{W}
+        \Bigr)
+        """)
         st.write("")
         st.write("Employing the **Text-Similarity Analysis** to see if AI tends to say the same things people do. How close the words are between pairs of texts? More importantly, which type of response follows the original question's wording more closely?") 
         imageida12 = Image.open("Streamlit/visualizations/ANS_sim.png") 
