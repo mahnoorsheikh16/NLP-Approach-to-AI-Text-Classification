@@ -124,7 +124,8 @@ elif page == "Evaluate Text":
         resp_spec = sum(1 for c in user_input if not c.isalnum() and not c.isspace())
         X_vec = vectorizer.transform([clean_input])  
         num_arr = np.array([[resp_len, resp_spec]])
-        num_scaled = char_scaler.transform(num_arr)
+        num_arr_full = np.array([[0, 0, resp_len, resp_spec]])
+        num_scaled = char_scaler.transform(num_arr_full)
         X_comb = hstack([X_vec, num_scaled])
         X_pca = pca.transform(X_comb.toarray())
         mlp_pred = mlp_model.predict(X_pca)[0]
