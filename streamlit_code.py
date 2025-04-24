@@ -87,8 +87,8 @@ elif page == "Evaluate Text":
         labels = ["Human", "AI"]
         colors = ['#66b3ff', '#ff9999']
 
-        # Create the half pie chart
-        fig, ax = plt.subplots()
+       # half pie chart
+        fig, ax = plt.subplots(figsize=(4, 2.5))  # Adjust width and height as needed
         wedges, texts, autotexts = ax.pie(
             values,
             labels=labels,
@@ -98,11 +98,11 @@ elif page == "Evaluate Text":
             autopct='%1.1f%%',
             wedgeprops={'width': 0.3}
         )
-
+        
         ax.set(aspect="equal")
-        plt.title("Prediction Confidence (Half Pie Chart)")
+        plt.title("Prediction Confidence (Half Pie Chart)", fontsize=12)
         plt.subplots_adjust(top=0.75)
-
+        
         # Show chart in Streamlit
         st.pyplot(fig)
         
