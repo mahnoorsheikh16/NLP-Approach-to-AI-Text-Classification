@@ -438,19 +438,7 @@ elif page == "Model & Insights":
 
             st.title("BERT Training Workflow Overview")
             
-            st.markdown("### 1. Text Preprocessing")
-            st.markdown("""
-            Before feeding the text into the BERT model, we apply standard preprocessing techniques to clean and normalize the data:
-            
-            - **Convert to lowercase**: Makes the text case-insensitive for consistency.  
-            - **Remove punctuation**: Eliminates unnecessary symbols that don't contribute to semantics.  
-            - **Remove special characters**: Filters out non-alphanumeric symbols (e.g., `@`, `#`, `%`).  
-            - **Remove stop words**: Deletes commonly used words (like *the*, *is*, *in*) that carry minimal meaning in classification tasks.  
-            
-            This ensures that the input is clean, uniform, and free of noise.
-            """)
-            
-            st.markdown("### 2. Tokenization using BERT Tokenizer")
+            st.markdown("### 1. Tokenization using BERT Tokenizer")
             st.markdown("""
             We use the BERT tokenizer from the `"bert-base-uncased"` model:
             
@@ -461,7 +449,7 @@ elif page == "Model & Insights":
             - Returns **attention masks** to distinguish real tokens from padding.
             """)
             
-            st.markdown("### 3. Model Training")
+            st.markdown("### 2. Model Training")
             st.markdown("""
             We fine-tune a pretrained BERT model for sequence classification:
             
