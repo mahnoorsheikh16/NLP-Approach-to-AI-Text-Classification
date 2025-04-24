@@ -68,7 +68,7 @@ elif page == "Evaluate Text":
     @st.cache_resource
     def load_mlp_artifacts():
         vect = joblib.load("Streamlit/vectorizer.pkl")
-        char_scaler = joblib.load("Streamlit/char_scaler.pkl")
+        char_scaler = joblib.load("Streamlit/scaler.pkl")
         pca_ = joblib.load("Streamlit/pca.pkl")
         mlp  = joblib.load("Streamlit/mlp_classifier.pkl")
         return vect, char_scaler, pca_, mlp
