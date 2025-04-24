@@ -215,16 +215,14 @@ elif page == "Model & Insights":
             st.image(imageida10, use_column_width=True)
             # 1. Δ formula
             st.subheader("1. Sentiment Gap (Δ)")
-            st.latex(r
-                     """\Delta_{\text{Hum–Q}} = S_{\text{Hum}} \;-\; S_{\text{Q}}
+            st.latex(r"""\Delta_{\text{Hum–Q}} = S_{\text{Hum}} \;-\; S_{\text{Q}}
             \quad\text{and}\quad
             \Delta_{\text{AI–Q}} = S_{\text{AI}} \;-\; S_{\text{Q}}
             """)
 
             # 2. KDE estimate
             st.subheader("2. Kernel Density Estimate (KDE)")
-            st.latex(r
-                     """\hat f_{\mathrm{KDE}}(x)
+            st.latex(r"""\hat f_{\mathrm{KDE}}(x)
             = \frac{1}{n\,h}\sum_{i=1}^n 
             \frac{1}{\sqrt{2\pi}}
             \exp\!\Bigl(-\tfrac12\,\bigl(\tfrac{x - \Delta^{(i)}}{h}\bigr)^2\Bigr)
