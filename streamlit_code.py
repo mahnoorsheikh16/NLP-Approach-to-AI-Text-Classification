@@ -137,7 +137,8 @@ elif page == "Evaluate Text":
                 counterclock=False,
                 wedgeprops={'width': 0.5, 'edgecolor': 'white'}
             )[0]
-            ax.set(aspect="equal", title=title, fontsize=6)
+            ax.set(aspect="equal")
+            ax.set_title(title, fontsize=6) 
             # annotate each slice with pct + label inside
             for w, pct, lbl in zip(wedges, vals, labels):
                 angle = 0.5*(w.theta2 + w.theta1)
