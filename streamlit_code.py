@@ -137,13 +137,13 @@ elif page == "Evaluate Text":
                 counterclock=False,
                 wedgeprops={'width': 0.5, 'edgecolor': 'white'}
             )[0]
-            ax.set(aspect="equal", title=title)
+            ax.set(aspect="equal", title=title, fontsize=6)
             # annotate each slice with pct + label inside
             for w, pct, lbl in zip(wedges, vals, labels):
                 angle = 0.5*(w.theta2 + w.theta1)
                 x = 0.6 * np.cos(np.deg2rad(angle))
                 y = 0.6 * np.sin(np.deg2rad(angle))
-                ax.text(x, y, f"{lbl}\n{pct:.0%}", ha='center', va='center', fontsize=6)
+                ax.text(x, y, f"{lbl}\n{pct:.0%}", ha='center', va='center', fontsize=3)
         
         st.pyplot(fig)
         
