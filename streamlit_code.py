@@ -96,7 +96,7 @@ elif page == "Evaluate Text":
             startangle=180,
             counterclock=False,
             autopct='%1.1f%%',
-            wedgeprops={'width': 0.5}
+            wedgeprops={'width': 0.3}
         )
 
         ax.set(aspect="equal")
