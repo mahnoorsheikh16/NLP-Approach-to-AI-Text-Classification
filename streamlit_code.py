@@ -71,7 +71,7 @@ elif page == "Evaluate Text":
         char_scaler = joblib.load("Streamlit/char_scaler.pkl")
         pca_ = joblib.load("Streamlit/pca.pkl")
         mlp  = joblib.load("Streamlit/mlp_classifier.pkl")
-        return vect, char_scaler, pca_, mlp_model
+        return vect, char_scaler, pca_, mlp
     vectorizer, char_scaler, pca, mlp_model = load_mlp_artifacts()
 
     #q_len = st.number_input("Question length:", min_value=0, value=0)
