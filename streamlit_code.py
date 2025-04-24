@@ -435,7 +435,43 @@ elif page == "Model & Insights":
 
         with tab2:  
             st.write("**How does it work?**")
-            st.write("put in details of how it works maybe")
+
+            st.title("BERT Training Workflow Overview")
+            
+            st.markdown("### 1. Text Preprocessing")
+            st.markdown("""
+            Before feeding the text into the BERT model, we apply standard preprocessing techniques to clean and normalize the data:
+            
+            - **Convert to lowercase**: Makes the text case-insensitive for consistency.  
+            - **Remove punctuation**: Eliminates unnecessary symbols that don't contribute to semantics.  
+            - **Remove special characters**: Filters out non-alphanumeric symbols (e.g., `@`, `#`, `%`).  
+            - **Remove stop words**: Deletes commonly used words (like *the*, *is*, *in*) that carry minimal meaning in classification tasks.  
+            
+            This ensures that the input is clean, uniform, and free of noise.
+            """)
+            
+            st.markdown("### 2. Tokenization using BERT Tokenizer")
+            st.markdown("""
+            We use the BERT tokenizer from the `"bert-base-uncased"` model:
+            
+            - Splits the input text into subword tokens (WordPiece tokenization).  
+            - Converts tokens into corresponding **token IDs** that match BERT's vocabulary.  
+            - Adds special tokens like `[CLS]` (for classification) and `[SEP]` (to separate segments).  
+            - Pads or truncates each input to a fixed maximum length.  
+            - Returns **attention masks** to distinguish real tokens from padding.
+            """)
+            
+            st.markdown("### 3. Model Training")
+            st.markdown("""
+            We fine-tune a pretrained BERT model for sequence classification:
+            
+            - **Model**: `BertForSequenceClassification` from Hugging Face.  
+            - **Optimizer**: Typically `AdamW` for handling weight decay.  
+            - **Loss Function**: Cross-entropy loss for classification tasks.  
+            - **Epochs**: We train the model for **3 epochs**, which is a good baseline for fine-tuning.  
+            - **Evaluation**: During or after training, we track metrics like **accuracy**, **precision**, **recall**, and **F1 score** using a validation set.
+            """)
+
             st.write("")
             with open("Streamlit/bert_result.pkl", "rb") as f:
                 report = pickle.load(f)
