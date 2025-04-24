@@ -123,25 +123,25 @@ if page == "Homepage":
     st.write("**Upload and Evaluate Text**: Navigate to the ‘Evaluate Text’ page (from the left-hand menu) to submit text and verify its authenticity.")
     st.write("**Learn About the Model and Key Trends**: Visit the ‘Model & Insights’ page to explore critical patterns and a detailed breakdown of the model employed for the analysis.")
     
-    # Add image at bottom center (only on Homepage)
-    with open("stt811statsproject_qr.png", "rb") as file:
-        img_bytes = file.read()
-        encoded = base64.b64encode(img_bytes).decode()
+    # # Add image at bottom center (only on Homepage)
+    # with open("stt811statsproject_qr.png", "rb") as file:
+    #     img_bytes = file.read()
+    #     encoded = base64.b64encode(img_bytes).decode()
 
-    st.markdown(f"""
-        <style>
-            .bottom-center {{
-                position: fixed;
-                bottom: 20px;
-                left: 55%;
-                transform: translateX(-50%);
-                z-index: 999;
-            }}
-        </style>
-        <div class="bottom-center">
-            <img src="data:image/png;base64,{encoded}" width="300">
-        </div>
-    """, unsafe_allow_html=True)
+    # st.markdown(f"""
+    #     <style>
+    #         .bottom-center {{
+    #             position: fixed;
+    #             bottom: 20px;
+    #             left: 55%;
+    #             transform: translateX(-50%);
+    #             z-index: 999;
+    #         }}
+    #     </style>
+    #     <div class="bottom-center">
+    #         <img src="data:image/png;base64,{encoded}" width="300">
+    #     </div>
+    # """, unsafe_allow_html=True)
 
 
 elif page == "Evaluate Text":
