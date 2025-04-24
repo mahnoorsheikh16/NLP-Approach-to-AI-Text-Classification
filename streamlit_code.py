@@ -80,7 +80,31 @@ def preprocess_text(text):
     stop_words = set(stopwords.words('english'))
     filtered_tokens = [word for word in tokens if word not in stop_words]
     return " ".join(filtered_tokens)
-    
+
+# Custom CSS to make only the sidebar dark
+st.markdown("""
+    <style>
+        /* Dark sidebar */
+        section[data-testid="stSidebar"] {
+            background-color: #1e1e1e !important;
+            color: white;
+        }
+
+        section[data-testid="stSidebar"] .css-1v3fvcr {
+            color: white;
+        }
+
+        section[data-testid="stSidebar"] a {
+            color: #4dabf7;
+        }
+
+        /* Optional: remove weird border padding */
+        section[data-testid="stSidebar"] > div {
+            padding: 1.5rem 1rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 #add navigation sidebar
 st.sidebar.title("🔎Explore")
 page = st.sidebar.selectbox("Select a page:", ["Homepage", "Evaluate Text", "Model & Insights"], index=0)
