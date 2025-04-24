@@ -83,7 +83,7 @@ elif page == "Evaluate Text":
         st.write(f"**Confidence:** {confidence:.2%}")
         st.write("Human prob:", probs[0][0].item(), "AI prob:", probs[0][1].item())
         # Data for pie chart
-        values = [probs[0][0], probs[0][1]]
+        values = [float(probs[0][0]), float(probs[0][1])]
         labels = ["Human", "AI"]
         colors = ['#66b3ff', '#ff9999']
 
