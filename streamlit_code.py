@@ -98,26 +98,31 @@ elif page == "Evaluate Text":
         st.write("**BERT’s Evaluation:**")
         st.write(label)
         st.write(f"**Confidence:** Human: {probs[0][0].item():.2%} AI: {probs[0][1].item():.2%}")
-        #st.write(f"**Confidence:** {confidence:.2%}")
-        #st.write("Human prob:", probs[0][0].item(), "AI prob:", probs[0][1].item())
+        
         # Data for pie chart
         values = [float(probs[0][0]), float(probs[0][1])]
         labels = ["Human", "AI"]
         colors = ['#66b3ff', '#ff9999']
-
-       # half pie chart
-        fig, ax = plt.subplots(figsize=(2, 1.25))
+        fig, ax = plt.subplots(figsize=(3, 3))
         wedges, texts, autotexts = ax.pie(
             values,
-            labels=labels,
+            labels=None,                   # we'll use legend instead
             colors=colors,
-            startangle=180,
+            startangle=90,
             counterclock=False,
             autopct='%1.1f%%',
-            wedgeprops={'width': 0.3}
+            pctdistance=0.75,
+            wedgeprops={'width': 0.4, 'edgecolor':'white'}
         )
         ax.set(aspect="equal")
-        plt.subplots_adjust(top=0.75)
+        # add center circle for donut look
+        centre_circle = plt.Circle((0,0),0.50,fc='white')
+        ax.add_artist(centre_circle)
+        ax.legend(wedges, labels,
+          title="Class",
+          loc="center left",
+          bbox_to_anchor=(1, 0, 0.5, 1))
+        plt.title("BERT Confidence", pad=20)
         st.pyplot(fig)
 
         #FOR MLP
