@@ -68,7 +68,7 @@ elif page == "Evaluate Text":
     @st.cache_resource
     def load_mlp_artifacts():
         vect = joblib.load("Streamlit/vectorizer.pkl")
-        sclr = joblib.load("Streamlit/char_scaler.pkl")
+        sclr = joblib.load("Streamlit/scaler.pkl")
         pca_ = joblib.load("Streamlit/pca.pkl")
         mlp  = joblib.load("Streamlit/mlp_classifier.pkl")
         return vect, sclr, pca_, mlp
@@ -76,6 +76,8 @@ elif page == "Evaluate Text":
 
     #q_len = st.number_input("Question length:", min_value=0, value=0)
     #q_spec = st.number_input("Question special-char count:", min_value=0, value=0)
+    q_len = 0 
+    q_spec = 0
     user_input = st.text_input("Enter Text:")
     if user_input:
         st.write(f"You entered: {user_input}")
