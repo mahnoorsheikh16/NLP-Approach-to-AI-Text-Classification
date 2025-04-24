@@ -26,6 +26,50 @@ from nltk.corpus import stopwords
 import joblib
 from scipy.sparse import hstack
 
+st.set_page_config(layout="wide", page_title="", initial_sidebar_state="expanded")
+
+#global font
+def set_global_font(font_name='Arial', font_size='16px'):
+    st.markdown(
+        f"""
+        <style>
+        body, p, div, span, a, button {{
+            font-family: '{font_name}', sans-serif !important;
+            font-size: {font_size} !important;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+set_global_font('Montserrat', '16px')
+
+# streamlit bg image
+def set_background(image_path):
+    with open(image_path, "rb") as image_file:
+        image_data = image_file.read()
+        base64_image = base64.b64encode(image_data).decode()
+    st.markdown(
+         f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/webp;base64,{base64_image}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        .main-title, h1, h2, h3, h4, h5, h6, p {{
+            color: white ;
+        }}
+        
+
+        """,
+        unsafe_allow_html=True
+    )
+
+# image input
+pic = 'statistics_background_transparent.png'
+set_background(pic)
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def preprocess_text(text):
@@ -39,7 +83,7 @@ def preprocess_text(text):
 #add navigation sidebar
 st.sidebar.title("🔎Explore")
 page = st.sidebar.selectbox("Select a page:", ["Homepage", "Evaluate Text", "Model & Insights"], index=0)
-for _ in range(18):
+for _ in range(35):
     st.sidebar.write("")
 st.sidebar.write("View the code and dataset details at [STT811 GitHub](https://github.com/andrew-jxhn/STT811_StatsProject)")
 
