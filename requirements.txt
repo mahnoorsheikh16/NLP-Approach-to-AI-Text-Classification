@@ -8,7 +8,6 @@ numpy==2.2.5
 matplotlib==3.10.1
 seaborn==0.13.2
 plotly==6.0.1
-hiplot==0.1.33
 Pillow==11.2.1
 joblib==1.4.2
 transformers==4.51.3
