@@ -1,6 +1,6 @@
 streamlit==1.38.0
-numpy==1.25.2
-pandas==2.2.2
+numpy==2.0.2
+pandas==2.2.3
 matplotlib==3.9.2
 seaborn==0.13.2
 hiplot==0.1.33
@@ -16,4 +16,4 @@ torch==2.2.2
 safetensors==0.4.2
 nltk==3.8.1
 requests==2.31.0
-scipy==1.13.0
+scipy==1.13.1
