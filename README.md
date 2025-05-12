@@ -1,5 +1,5 @@
 
-# 📊 AI or Human? A Machine Learning Approach to Text Classification for Statistical Courses
+# AI or Human? A Machine Learning Approach to Text Classification for Statistical Courses
 
 **Course**: STT 811 – Applied Statistics Modeling for Data Scientists  
 **Instructor**: Savvy Barnes  
