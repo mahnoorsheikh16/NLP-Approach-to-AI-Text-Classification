@@ -3,10 +3,9 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
 
 *This is a course project for STT 811 Applied Statistical Modeling for Data Scientists at MSU. The contributors are Mahnoor Sheikh, Andrew John J, Roshni Bhowmik and Ab Basit Syed Rafi.
 
-🌐 Streamlit App: [Text Classification App](https://nlp-approach-to-ai-text-classification-stt-811.streamlit.app/)  
+🌐 Access the [streamlit web app](https://nlp-approach-to-ai-text-classification-stt-811.streamlit.app/) to delve into the detailed steps of data cleaning, preprocessing, and modelling, as well as to uncover the insights derived from the analysis.
 
 ## Dataset
-
 - **Source**: Custom dataset of 2,239 rows (from Mendeley)
 - **Contents**:
   - `Question`: The original statistics question
@@ -15,7 +14,6 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
 - **Post-cleaning**: 1,993 usable examples
 
 ## Preprocessing & Feature Engineering
-
 - **Cleaning**: Lowercasing, punctuation removal, tokenization, stopword removal
 - **Feature Creation**:
   - Text length, special character counts
@@ -25,7 +23,6 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
 - **Vectorization**: `CountVectorizer` followed by PCA (95% variance retained in 482 components)
 
 ## Exploratory Data Analysis
-
 Key visuals and insights:
 - **Top Trigrams** and **Common Words** in AI vs. Human responses
 - **Word Clouds** and **Text Length Distribution**
@@ -35,7 +32,6 @@ Key visuals and insights:
 - **Pairplots & Correlation Heatmaps** reveal subtle response patterns
 
 ## Modeling
-
 ### Traditional ML Models
 - Logistic Regression, Linear SVM, Decision Tree, Random Forest, KNN, Gradient Boosting, MLP
 - **Best Accuracy**: ~85% (Logistic Regression, SVM, MLP)
@@ -49,27 +45,23 @@ Key visuals and insights:
 - **Performance**: Comparable to traditional models with potential for further gains
 
 ## Streamlit App Features
-
 - Upload new questions and responses
 - Evaluate text using trained models
 - Visual analytics: word clouds, trigrams, readability, sentiment
 - Compare AI vs. human characteristics interactively
 
 ## Key Takeaways
-
 - Human responses were simpler, less verbose, and showed more variability
 - AI responses were longer, sentimentally aligned with questions, and structurally consistent
 - Readability, sentiment gap, and cosine similarity are strong distinguishing features
 - The system offers a foundational step toward detecting AI-generated content in education
 
 ## References
-
 - [Dataset on Mendeley](https://data.mendeley.com/datasets/mh892rksk2/4)
 - [Hugging Face Transformers](https://huggingface.co/transformers/)
 - [Streamlit Documentation](https://docs.streamlit.io/)
 
 ## Installation & Usage
-
 ```bash
 # Clone repo
 git clone https://github.com/andrew-jxhn/STT811_StatsProject.git
