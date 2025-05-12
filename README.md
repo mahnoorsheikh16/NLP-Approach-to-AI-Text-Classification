@@ -5,6 +5,16 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
 
 🌐 Access the [streamlit web app](https://nlp-approach-to-ai-text-classification-stt-811.streamlit.app/) to delve into the detailed steps of data cleaning, preprocessing, and modelling, as well as to uncover the insights derived from the analysis.
 
+## Table of Contents
+1. [Dataset](#dataset)
+2. [Preprocessing & Feature Engineering](#preprocessing-&-feature-engineering)
+3. [Exploratory Data Analysis](#exploratory-data-analysis)
+4. [Modeling](#modeling)
+5. [Streamlit App Features](#streamlit-app-features)
+6. [Key Takeaways](#key-takeaways)
+7. [References](#references)
+8. [Installation & Usage](#installation-&-usage)
+
 ## Dataset
 - **Source**: Custom dataset of 2,239 rows (from Mendeley)
 - **Contents**:
