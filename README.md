@@ -7,13 +7,13 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
 
 ## Table of Contents
 1. [Dataset](#dataset)
-2. [Preprocessing & Feature Engineering](#preprocessing-&-feature-engineering)
+2. [Preprocessing and Feature Engineering](#preprocessing-and-feature-engineering)
 3. [Exploratory Data Analysis](#exploratory-data-analysis)
 4. [Modeling](#modeling)
 5. [Streamlit App Features](#streamlit-app-features)
 6. [Key Takeaways](#key-takeaways)
 7. [References](#references)
-8. [Installation & Usage](#installation-&-usage)
+8. [Installation and Usage](#installation-and-usage)
 
 ## Dataset
 - **Source**: Custom dataset of 2,239 rows (from Mendeley)
@@ -23,7 +23,7 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
   - `AI Response`: Text generated using a language model
 - **Post-cleaning**: 1,993 usable examples
 
-## Preprocessing & Feature Engineering
+## Preprocessing and Feature Engineering
 - **Cleaning**: Lowercasing, punctuation removal, tokenization, stopword removal
 - **Feature Creation**:
   - Text length, special character counts
@@ -71,7 +71,7 @@ Key visuals and insights:
 - [Hugging Face Transformers](https://huggingface.co/transformers/)
 - [Streamlit Documentation](https://docs.streamlit.io/)
 
-## Installation & Usage
+## Installation and Usage
 ```bash
 # Clone repo
 git clone https://github.com/andrew-jxhn/STT811_StatsProject.git
