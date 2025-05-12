@@ -8,7 +8,6 @@
 ## 🔗 Live App
 
 🌐 Streamlit App: [STT811 Text Classification App](https://stt811statsproject.streamlit.app/)  
-📁 GitHub Repo: [STT811_StatsProject](https://github.com/andrew-jxhn/STT811_StatsProject)
 
 ---
 
