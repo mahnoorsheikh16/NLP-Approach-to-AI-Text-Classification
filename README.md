@@ -3,9 +3,7 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
 
 *This is a course project for STT 811 Applied Statistical Modeling for Data Scientists at MSU. The contributors are Mahnoor Sheikh, Andrew John J, Roshni Bhowmik and Ab Basit Syed Rafi.
 
-## 🔗 Live App
-
-🌐 Streamlit App: [STT811 Text Classification App](https://nlp-approach-to-ai-text-classification-stt-811.streamlit.app/)  
+🌐 Streamlit App: [Text Classification App](https://nlp-approach-to-ai-text-classification-stt-811.streamlit.app/)  
 
 ## 📂 Dataset
 
