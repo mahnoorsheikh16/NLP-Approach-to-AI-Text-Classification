@@ -3,7 +3,7 @@
 
 **Course**: STT 811 – Applied Statistics Modeling for Data Scientists  
 **Instructor**: Savvy Barnes  
-**Contributors**: Andrew John J, Roshni Bhowmik, Mahnoor Sheikh, Ab Basit Syed Rafi
+**Contributors**: Mahnoor Sheikh, Andrew John J, Roshni Bhowmik, Ab Basit Syed Rafi
 
 ## 🔗 Live App
 
