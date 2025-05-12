@@ -5,7 +5,7 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
 
 🌐 Streamlit App: [Text Classification App](https://nlp-approach-to-ai-text-classification-stt-811.streamlit.app/)  
 
-## 📂 Dataset
+## Dataset
 
 - **Source**: Custom dataset of 2,239 rows (from Mendeley)
 - **Contents**:
@@ -14,7 +14,7 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
   - `AI Response`: Text generated using a language model
 - **Post-cleaning**: 1,993 usable examples
 
-## ⚙️ Preprocessing & Feature Engineering
+## Preprocessing & Feature Engineering
 
 - **Cleaning**: Lowercasing, punctuation removal, tokenization, stopword removal
 - **Feature Creation**:
@@ -24,7 +24,7 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
   - Sentiment scores and sentiment gaps
 - **Vectorization**: `CountVectorizer` followed by PCA (95% variance retained in 482 components)
 
-## 📊 Exploratory Data Analysis
+## Exploratory Data Analysis
 
 Key visuals and insights:
 - **Top Trigrams** and **Common Words** in AI vs. Human responses
@@ -34,7 +34,7 @@ Key visuals and insights:
 - **Text Similarity**: AI more aligned with original questions
 - **Pairplots & Correlation Heatmaps** reveal subtle response patterns
 
-## 🤖 Modeling
+## Modeling
 
 ### Traditional ML Models
 - Logistic Regression, Linear SVM, Decision Tree, Random Forest, KNN, Gradient Boosting, MLP
@@ -48,27 +48,27 @@ Key visuals and insights:
   - AdamW optimizer
 - **Performance**: Comparable to traditional models with potential for further gains
 
-## 📱 Streamlit App Features
+## Streamlit App Features
 
 - Upload new questions and responses
 - Evaluate text using trained models
 - Visual analytics: word clouds, trigrams, readability, sentiment
 - Compare AI vs. human characteristics interactively
 
-## 📌 Key Takeaways
+## Key Takeaways
 
 - Human responses were simpler, less verbose, and showed more variability
 - AI responses were longer, sentimentally aligned with questions, and structurally consistent
 - Readability, sentiment gap, and cosine similarity are strong distinguishing features
 - The system offers a foundational step toward detecting AI-generated content in education
 
-## 📚 References
+## References
 
 - [Dataset on Mendeley](https://data.mendeley.com/datasets/mh892rksk2/4)
 - [Hugging Face Transformers](https://huggingface.co/transformers/)
 - [Streamlit Documentation](https://docs.streamlit.io/)
 
-## 📦 Installation & Usage
+## Installation & Usage
 
 ```bash
 # Clone repo
