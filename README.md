@@ -9,13 +9,9 @@
 
 🌐 Streamlit App: [STT811 Text Classification App](https://stt811statsproject.streamlit.app/)  
 
----
-
 ## 📌 Project Overview
 
 With the increasing use of AI tools like ChatGPT in academia, distinguishing between human- and AI-generated responses is essential for maintaining academic integrity. This project explores a machine learning pipeline to classify text as human- or AI-generated based on linguistic and semantic features.
-
----
 
 ## 📂 Dataset
 
@@ -25,8 +21,6 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
   - `Human Response`: Text response from a student
   - `AI Response`: Text generated using a language model
 - **Post-cleaning**: 1,993 usable examples
-
----
 
 ## ⚙️ Preprocessing & Feature Engineering
 
@@ -38,8 +32,6 @@ With the increasing use of AI tools like ChatGPT in academia, distinguishing bet
   - Sentiment scores and sentiment gaps
 - **Vectorization**: `CountVectorizer` followed by PCA (95% variance retained in 482 components)
 
----
-
 ## 📊 Exploratory Data Analysis
 
 Key visuals and insights:
@@ -49,8 +41,6 @@ Key visuals and insights:
 - **Readability Scores**: AI responses are longer and more formulaic
 - **Text Similarity**: AI more aligned with original questions
 - **Pairplots & Correlation Heatmaps** reveal subtle response patterns
-
----
 
 ## 🤖 Modeling
 
@@ -66,16 +56,12 @@ Key visuals and insights:
   - AdamW optimizer
 - **Performance**: Comparable to traditional models with potential for further gains
 
----
-
 ## 📱 Streamlit App Features
 
 - Upload new questions and responses
 - Evaluate text using trained models
 - Visual analytics: word clouds, trigrams, readability, sentiment
 - Compare AI vs. human characteristics interactively
-
----
 
 ## 📌 Key Takeaways
 
@@ -84,15 +70,11 @@ Key visuals and insights:
 - Readability, sentiment gap, and cosine similarity are strong distinguishing features
 - The system offers a foundational step toward detecting AI-generated content in education
 
----
-
 ## 📚 References
 
 - [Dataset on Mendeley](https://data.mendeley.com/datasets/mh892rksk2/4)
 - [Hugging Face Transformers](https://huggingface.co/transformers/)
 - [Streamlit Documentation](https://docs.streamlit.io/)
-
----
 
 ## 📦 Installation & Usage
 
