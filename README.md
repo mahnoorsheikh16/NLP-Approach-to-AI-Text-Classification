@@ -1,17 +1,11 @@
-
 # AI or Human? A Machine Learning Approach to Text Classification for Statistical Courses
+With the increasing use of AI tools like ChatGPT in academia, distinguishing between human- and AI-generated responses is essential for maintaining academic integrity. This project explores a machine learning pipeline to classify text as human- or AI-generated based on linguistic and semantic features.
 
-**Course**: STT 811 – Applied Statistics Modeling for Data Scientists  
-**Instructor**: Savvy Barnes  
-**Contributors**: Mahnoor Sheikh, Andrew John J, Roshni Bhowmik, Ab Basit Syed Rafi
+*This is a course project for STT 811 Applied Statistical Modeling for Data Scientists at MSU. The contributors are Mahnoor Sheikh, Andrew John J, Roshni Bhowmik and Ab Basit Syed Rafi.
 
 ## 🔗 Live App
 
-🌐 Streamlit App: [STT811 Text Classification App](https://stt811statsproject.streamlit.app/)  
-
-## 📌 Project Overview
-
-With the increasing use of AI tools like ChatGPT in academia, distinguishing between human- and AI-generated responses is essential for maintaining academic integrity. This project explores a machine learning pipeline to classify text as human- or AI-generated based on linguistic and semantic features.
+🌐 Streamlit App: [STT811 Text Classification App](https://nlp-approach-to-ai-text-classification-stt-811.streamlit.app/)  
 
 ## 📂 Dataset
 
